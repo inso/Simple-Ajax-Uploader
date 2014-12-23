@@ -483,7 +483,8 @@ ss.SimpleUpload = function( options ) {
         startXHR: function( filename, fileSize, uploadBtn ) {},
         endXHR: function( filename, fileSize, uploadBtn ) {},
         startNonXHR: function( filename, uploadBtn ) {},
-        endNonXHR: function( filename, uploadBtn ) {}
+        endNonXHR: function( filename, uploadBtn ) {},
+        onInputCreated: function( input, inputContainer ) {}
     };
 
     ss.extendObj( this._opts, options );
@@ -891,6 +892,7 @@ ss.SimpleUpload.prototype = {
 
         div.appendChild( this._input );
         document.body.appendChild( div );
+        this._opts.onInputCreated( this._input, div );
     },
 
     /**
