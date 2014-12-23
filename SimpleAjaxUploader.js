@@ -1613,7 +1613,7 @@ ss.SimpleUpload.prototype = {
             if ( !extOk ) {
                 this.removeCurrent();
                 this.log( 'File extension not permitted' );
-                this._opts.onExtError.call( this, filename, ext );
+                this._opts.onExtError.call( this, filename, ext, allowed );
                 return false;
             }
         }
