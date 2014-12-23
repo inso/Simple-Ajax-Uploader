@@ -474,6 +474,7 @@ ss.SimpleUpload = function( options ) {
         containerZIndex: 2147483583,
         onAbort: function( filename, uploadBtn ) {},
         onChange: function( filename, extension, uploadBtn ) {},
+        onBeforeSubmit: function() {},
         onSubmit: function( filename, extension, uploadBtn ) {},
         onProgress: function( pct ) {},
         onUpdateFileSize: function( filesize ) {},
@@ -1642,6 +1643,10 @@ ss.SimpleUpload.prototype = {
              this._active >= this._opts.maxUploads ||
              this._queue.length < 1 )
         {
+            return;
+        }
+
+        if ( false === this._opts.onBeforeSubmit.call( this ) ) {
             return;
         }
 
