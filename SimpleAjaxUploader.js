@@ -234,7 +234,7 @@ ss.getBox = function( elem ) {
 /**
 * Helper that takes object literal
 * and add all properties to element.style
-* @param {Element} el
+* @param {Element} elem
 * @param {Object} styles
 */
 ss.addStyles = function( elem, styles ) {
@@ -657,11 +657,7 @@ ss.SimpleUpload.prototype = {
         "use strict";
 
         this._abortBtn = ss.verifyElem( elem );
-        this._removeAbort = false;
-
-        if ( remove ) {
-            this._removeAbort = true;
-        }
+        this._removeAbort = remove;
     },
 
     /**
@@ -953,6 +949,7 @@ ss.SimpleUpload.prototype = {
     /**
     * Creates form, that will be submitted to iframe
     * @param {Element} iframe Where to submit
+    * @param {String} key
     * @return {Element} form
     */
     _getForm: function( iframe, key ) {
