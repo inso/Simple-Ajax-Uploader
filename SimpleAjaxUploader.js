@@ -471,6 +471,7 @@ ss.SimpleUpload = function( options ) {
         focusClass: '',
         disabledClass: '',
         customHeaders: {},
+        containerZIndex: 2147483583,
         onAbort: function( filename, uploadBtn ) {},
         onChange: function( filename, extension, uploadBtn ) {},
         onSubmit: function( filename, extension, uploadBtn ) {},
@@ -797,7 +798,7 @@ ss.SimpleUpload.prototype = {
             'padding' : 0,
             'opacity' : 0,
             'direction' : 'ltr',
-            'zIndex': 2147483583
+            'zIndex': this._opts.containerZIndex
         });
 
         ss.addStyles( this._input, {
