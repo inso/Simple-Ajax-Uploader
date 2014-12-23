@@ -893,7 +893,7 @@ ss.SimpleUpload.prototype = {
 
         div.appendChild( this._input );
         document.body.appendChild( div );
-        this._opts.onInputCreated( this._input, div );
+        this._opts.onInputCreated.call( this, this._input, div );
     },
 
     /**
