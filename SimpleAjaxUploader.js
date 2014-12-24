@@ -8,6 +8,7 @@
  */
 
 ;(function( window, document, undefined ) {
+    "use strict";
 
     var ss = window.ss || {},
 
@@ -48,8 +49,6 @@
 * Converts object to query string
 */
 ss.obj2string = function( obj, prefix ) {
-    "use strict";
-
     var str = [];
     for ( var prop in obj ) {
         if ( obj.hasOwnProperty( prop ) ) {
@@ -66,8 +65,6 @@ ss.obj2string = function( obj, prefix ) {
 * Copies all missing properties from second object to first object
 */
 ss.extendObj = function( first, second ) {
-    "use strict";
-
     for ( var prop in second ) {
         if ( second.hasOwnProperty( prop ) ) {
             first[prop] = second[prop];
@@ -79,8 +76,6 @@ ss.extendObj = function( first, second ) {
 * Returns true if item is found in array
 */
 ss.contains = function( array, item ) {
-    "use strict";
-
     var i = array.length;
     while ( i-- ) {
         if ( array[i] === item ) {
@@ -94,8 +89,6 @@ ss.contains = function( array, item ) {
 * Remove an item from an array
 */
 ss.removeItem = function( array, item ) {
-    "use strict";
-
     var i = array.length;
     while ( i-- ) {
         if ( array[i] === item ) {
@@ -106,8 +99,6 @@ ss.removeItem = function( array, item ) {
 };
 
 ss.addEvent = function( elem, type, fn ) {
-    "use strict";
-
     if ( elem.addEventListener ) {
         elem.addEventListener( type, fn, false );
 
@@ -120,8 +111,6 @@ ss.addEvent = function( elem, type, fn ) {
 };
 
 ss.removeEvent = function( elem, type, fn ) {
-    "use strict";
-
     if ( elem.removeEventListener ) {
         elem.removeEventListener( type, fn, false );
 
@@ -131,8 +120,6 @@ ss.removeEvent = function( elem, type, fn ) {
 };
 
 ss.newXHR = function() {
-    "use strict";
-
     if ( typeof XMLHttpRequest !== 'undefined' ) {
         return new window.XMLHttpRequest();
 
@@ -150,8 +137,6 @@ ss.newXHR = function() {
 * Borrowed from www.jquery.com
 */
 ss.parseJSON = function( data ) {
-    "use strict";
-
     if ( !data ) {
         return false;
     }
@@ -205,8 +190,6 @@ ss.parseJSON = function( data ) {
 };
 
 ss.getBox = function( elem ) {
-    "use strict";
-
     var box,
         docElem,
         top = 0,
@@ -238,8 +221,6 @@ ss.getBox = function( elem ) {
 * @param {Object} styles
 */
 ss.addStyles = function( elem, styles ) {
-    "use strict";
-
     for ( var name in styles ) {
         if ( styles.hasOwnProperty( name ) ) {
             elem.style[name] = styles[name];
@@ -253,8 +234,6 @@ ss.addStyles = function( elem, styles ) {
 * copying position and dimensions.
 */
 ss.copyLayout = function( from, to ) {
-    "use strict";
-
     var box = ss.getBox( from );
 
     ss.addStyles( to, {
@@ -272,8 +251,6 @@ ss.copyLayout = function( from, to ) {
 * http://stackoverflow.com/a/2117523/1091949
 */
 ss.getUID = function() {
-    "use strict";
-
     /*jslint bitwise: true*/
     return 'axxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(uidReplace, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -285,7 +262,6 @@ ss.getUID = function() {
 * Removes white space from left and right of string
 */
 ss.trim = function( text ) {
-    "use strict";
     return text.toString().replace( rLWhitespace, '' ).replace( rTWhitespace, '' );
 };
 
@@ -293,7 +269,6 @@ ss.trim = function( text ) {
 * Extract file name from path
 */
 ss.getFilename = function( path ) {
-    "use strict";
     return path.replace( rPath, '' );
 };
 
@@ -301,7 +276,6 @@ ss.getFilename = function( path ) {
 * Get file extension
 */
 ss.getExt = function( file ) {
-    "use strict";
     return ( -1 !== file.indexOf( '.' ) ) ? file.replace( rExt, '' ) : '';
 };
 
@@ -310,7 +284,6 @@ ss.getExt = function( file ) {
 * Parts borrowed from www.jquery.com
 */
 ss.hasClass = function( elem, name ) {
-    "use strict";
     return ( ' ' + elem.className + ' ' ).replace( rHasClass, ' ' ).indexOf( ' ' + name + ' ' ) >= 0;
 };
 
@@ -318,8 +291,6 @@ ss.hasClass = function( elem, name ) {
 * Adds CSS class to an element
 */
 ss.addClass = function( elem, name ) {
-    "use strict";
-
     if ( !name || name === '' ) {
         return false;
     }
@@ -332,8 +303,6 @@ ss.addClass = function( elem, name ) {
 * Removes CSS class from an element
 */
 ss.removeClass = (function() {
-    "use strict";
-
     var c = {}; //cache regexps for performance
 
     return function( e, name ) {
@@ -351,8 +320,6 @@ ss.removeClass = (function() {
 * @return void
 */
 ss.purge = function( d ) {
-    "use strict";
-
     var a = d.attributes, i, l, n;
 
     if ( a ) {
@@ -379,8 +346,6 @@ ss.purge = function( d ) {
 * Removes element from the DOM
 */
 ss.remove = function( elem ) {
-    "use strict";
-
     if ( elem.parentNode ) {
         // null out event handlers for IE
         ss.purge( elem );
@@ -396,8 +361,6 @@ ss.remove = function( elem ) {
 * @return {Element}
 */
 ss.verifyElem = function( elem ) {
-    "use strict";
-
     if ( typeof jQuery !== 'undefined' && elem instanceof jQuery ) {
         elem = elem[0];
 
@@ -436,8 +399,6 @@ ss.verifyElem = function( elem ) {
 View README.md for documentation
 */
 ss.SimpleUpload = function( options ) {
-    "use strict";
-
     var i,
         len,
         btn;
@@ -554,8 +515,6 @@ ss.SimpleUpload.prototype = {
     * Completely removes uploader functionality
     */
     destroy: function() {
-        "use strict";
-
         // # of upload buttons
         var i = this._btns.length;
 
@@ -590,8 +549,6 @@ ss.SimpleUpload.prototype = {
     * Send data to browser console if debug is set to true
     */
     log: function( str ) {
-        "use strict";
-
         if ( this._opts.debug && window.console ) {
             console.log( '[uploader] ' + str );
         }
@@ -602,7 +559,6 @@ ss.SimpleUpload.prototype = {
     * Note that all previously set data is entirely removed and replaced
     */
     setData: function( data ) {
-        "use strict";
         this._opts.data = data;
     },
 
@@ -611,7 +567,6 @@ ss.SimpleUpload.prototype = {
     * @param {Object} options
     */
     setOptions: function( options ) {
-        "use strict";
         ss.extendObj( this._opts, options );
     },
 
@@ -620,7 +575,6 @@ ss.SimpleUpload.prototype = {
     * The CSS width % of the element will be updated as the upload progresses
     */
     setProgressBar: function( elem ) {
-        "use strict";
         this._progBar = ss.verifyElem( elem );
     },
 
@@ -629,7 +583,6 @@ ss.SimpleUpload.prototype = {
     * Note: Uses innerHTML, so any existing child elements will be wiped out
     */
     setPctBox: function( elem ) {
-        "use strict";
         this._pctBox = ss.verifyElem( elem );
     },
 
@@ -638,7 +591,6 @@ ss.SimpleUpload.prototype = {
     * Note: Uses innerHTML, so any existing child elements will be wiped out
     */
     setFileSizeBox: function( elem ) {
-        "use strict";
         this._sizeBox = ss.verifyElem( elem );
     },
 
@@ -647,7 +599,6 @@ ss.SimpleUpload.prototype = {
     * Useful for removing progress bar, file size, etc. after upload
     */
     setProgressContainer: function( elem ) {
-        "use strict";
         this._progBox = ss.verifyElem( elem );
     },
 
@@ -655,8 +606,6 @@ ss.SimpleUpload.prototype = {
     * Designate an element to serve as the upload abort button
     */
     setAbortBtn: function( elem, remove ) {
-        "use strict";
-
         this._abortBtn = ss.verifyElem( elem );
         this._removeAbort = remove;
     },
@@ -665,7 +614,6 @@ ss.SimpleUpload.prototype = {
     * Returns number of files currently in queue
     */
     getQueueSize: function() {
-        "use strict";
         return this._queue.length;
     },
 
@@ -673,8 +621,6 @@ ss.SimpleUpload.prototype = {
     * Enables uploader and submits next file for upload
     */
     _cycleQueue: function() {
-        "use strict";
-
         if ( this._queue.length > 0 && this._opts.autoSubmit ) {
             this.submit();
         }
@@ -684,8 +630,6 @@ ss.SimpleUpload.prototype = {
     * Remove current file from upload queue, reset props, cycle to next upload
     */
     removeCurrent: function() {
-        "use strict";
-
         var i = this._queue.length;
 
         while ( i-- ) {
@@ -703,7 +647,6 @@ ss.SimpleUpload.prototype = {
     * Clears Queue so only most recent select file is uploaded
     */
     clearQueue: function() {
-        "use strict";
         this._queue = [];
     },
 
@@ -711,8 +654,6 @@ ss.SimpleUpload.prototype = {
     * Disables upload functionality
     */
     disable: function() {
-        "use strict";
-
         var i = this._btns.length,
             nodeName;
 
@@ -738,8 +679,6 @@ ss.SimpleUpload.prototype = {
     * Enables upload functionality
     */
     enable: function() {
-        "use strict";
-
         var i = this._btns.length;
 
         this._disabled = false;
@@ -767,8 +706,6 @@ ss.SimpleUpload.prototype = {
     * <div><input type='file' /></div>
     */
     _createInput: function() {
-        "use strict";
-
         var self = this,
             div = document.createElement( 'div' );
 
@@ -898,8 +835,6 @@ ss.SimpleUpload.prototype = {
     * the this._input is clicked instead
     */
     rerouteClicks: function( elem ) {
-        "use strict";
-
         var self = this;
 
         // ss.addEvent() returns a function to detach, which
@@ -926,8 +861,6 @@ ss.SimpleUpload.prototype = {
     * @return {Element} iframe
     */
     _getFrame: function() {
-        "use strict";
-
         var id = ss.getUID(),
             iframe;
 
@@ -954,8 +887,6 @@ ss.SimpleUpload.prototype = {
     * @return {Element} form
     */
     _getForm: function( iframe, key ) {
-        "use strict";
-
         var form = document.createElement('form'),
             url = this._opts.url;
 
@@ -985,8 +916,6 @@ ss.SimpleUpload.prototype = {
     * @return {Element} input
     */
     _getHidden: function( name, value ) {
-        "use strict";
-
         var input = document.createElement( 'input' );
 
         input.type = 'hidden';
@@ -999,8 +928,6 @@ ss.SimpleUpload.prototype = {
     * Final cleanup function after upload ends
     */
     _last: function( sizeBox, progBox, pctBox, abortBtn, removeAbort ) {
-        "use strict";
-
         if ( sizeBox ) {
             sizeBox.innerHTML = '';
         }
@@ -1034,8 +961,6 @@ ss.SimpleUpload.prototype = {
     * Completes upload request if an error is detected
     */
     _errorFinish: function( status, statusText, response, errorType, filename, sizeBox, progBox, pctBox, abortBtn, removeAbort, uploadBtn ) {
-        "use strict";
-
         this.log( 'Upload failed: ' + status + ' ' + statusText );
         response = ss.parseJSON( response );
         this._opts.onError.call( this, filename, errorType, status, statusText, response, uploadBtn );
@@ -1049,8 +974,6 @@ ss.SimpleUpload.prototype = {
     * Completes upload request if the transfer was successful
     */
     _finish: function( status, statusText, response, filename, sizeBox, progBox, pctBox, abortBtn, removeAbort, uploadBtn ) {
-        "use strict";
-
         this.log( 'Server response: ' + response );
 
         if ( this._opts.responseType.toLowerCase() == 'json' ) {
@@ -1073,8 +996,6 @@ ss.SimpleUpload.prototype = {
     * Handles uploading with XHR
     */
     _uploadXhr: function( filename, size, sizeBox, progBar, progBox, pctBox, abortBtn, removeAbort, uploadBtn ) {
-        "use strict";
-
         var self = this,
             opts = this._opts,
             xhr = ss.newXHR(),
@@ -1238,8 +1159,6 @@ ss.SimpleUpload.prototype = {
     * Handles uploading with iFrame
     */
     _uploadIframe: function( filename, sizeBox, progBar, progBox, pctBox, uploadBtn ) {
-        "use strict";
-
         var self = this,
             opts = this._opts,
             key = ss.getUID(),
@@ -1390,8 +1309,6 @@ ss.SimpleUpload.prototype = {
     * (for fallback upload progress support)
     */
     _getProg: function( key, progBar, sizeBox, pctBox, counter ) {
-        "use strict";
-
         var self = this,
             opts = this._opts,
             time = new Date().getTime(),
@@ -1591,8 +1508,6 @@ ss.SimpleUpload.prototype = {
     * Checks file extension and file size if limits are set
     */
     _checkFile: function( filename, ext, size ) {
-        "use strict";
-
         var allowed = this._opts.allowedExtensions,
             i = allowed.length,
             extOk = false;
@@ -1633,8 +1548,6 @@ ss.SimpleUpload.prototype = {
     * Validates input and directs to either XHR method or iFrame method
     */
     submit: function() {
-        "use strict";
-
         var filename,
             ext,
             size;
