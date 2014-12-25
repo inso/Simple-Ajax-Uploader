@@ -420,7 +420,7 @@ ss.SimpleUpload = function( options ) {
         corsInputName: 'XHR_CORS_TARGETORIGIN',
         allowedExtensions: [],
         accept: '',
-        maxSize: false,
+        maxSize: null,
         name: '',
         data: {},
         autoSubmit: true,
@@ -1532,7 +1532,7 @@ ss.SimpleUpload.prototype = {
         }
 
         if ( size &&
-             this._opts.maxSize !== false &&
+            (this._opts.maxSize || this._opts.maxSize === 0) &&
              size > this._opts.maxSize )
         {
             this.removeCurrent();
