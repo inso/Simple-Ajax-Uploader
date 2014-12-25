@@ -421,7 +421,7 @@ ss.SimpleUpload = function( options ) {
         allowedExtensions: [],
         accept: '',
         maxSize: null,
-        name: '',
+        name: null,
         data: {},
         autoSubmit: true,
         multipart: false,
@@ -453,6 +453,10 @@ ss.SimpleUpload = function( options ) {
     ss.extendObj( this._opts, options );
     options = null; // Null to avoid leaks in IE
     this._btns = [];
+
+    if ( !this._opts.name ) {
+        throw new Error( "Option 'name' should be provided." );
+    }
 
     // An array of buttons were passed
     if ( this._opts.button instanceof Array ) {
