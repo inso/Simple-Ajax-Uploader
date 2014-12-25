@@ -1509,7 +1509,7 @@ ss.SimpleUpload.prototype = {
     */
     _checkFile: function( filename, ext, size ) {
         var allowed = this._opts.allowedExtensions,
-            i = allowed.length,
+            i = allowed ? allowed.length : 0,
             extOk = false;
 
         // Only file extension if allowedExtensions is set
