@@ -1537,7 +1537,7 @@ ss.SimpleUpload.prototype = {
         {
             this.removeCurrent();
             this.log( filename + ' exceeds ' + this._opts.maxSize + 'K limit' );
-            this._opts.onSizeError.call( this, filename, size );
+            this._opts.onSizeError.call( this, filename, size, this._opts.maxSize );
             return false;
         }
 
